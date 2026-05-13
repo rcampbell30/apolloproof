@@ -30,7 +30,6 @@ const HowWeKnow = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Content animations
       gsap.from('.how-eyebrow', {
         x: -30,
         opacity: 0,
@@ -80,7 +79,6 @@ const HowWeKnow = () => {
         },
       });
 
-      // Image parallax
       gsap.from(imageRef.current, {
         scale: 1.1,
         opacity: 0,
@@ -110,13 +108,11 @@ const HowWeKnow = () => {
 
   return (
     <section ref={sectionRef} className="relative py-24 lg:py-32 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-950/20 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-950/20 via-transparent to-transparent" aria-hidden="true" />
 
       <div className="relative z-10 w-full section-padding">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Left Content */}
             <div>
               <span className="how-eyebrow inline-block text-blue-400 font-['Space_Grotesk'] font-semibold text-sm tracking-widest uppercase mb-4">
                 Verification Chain
@@ -127,22 +123,17 @@ const HowWeKnow = () => {
               </h2>
 
               <p className="how-paragraph text-gray-400 text-lg mb-10 leading-relaxed">
-                The Apollo missions left multiple independent evidence trails. 
-                Each one confirms the others, creating an unbreakable chain of proof.
+                The Apollo missions left multiple independent evidence trails. Each one confirms the others, creating an unbreakable chain of proof.
               </p>
 
-              {/* Evidence Checklist */}
               <div className="space-y-5">
                 {evidenceItems.map((item, index) => (
-                  <div
-                    key={index}
-                    className="how-item flex items-start gap-4 group"
-                  >
-                    <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center group-hover:bg-blue-500/30 transition-colors duration-300">
-                      <Check className="w-5 h-5 text-blue-400" />
+                  <div key={index} className="how-item flex items-start gap-4 group">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center group-hover:bg-blue-500/30 transition-colors duration-300" aria-hidden="true">
+                      <Check aria-hidden="true" className="w-5 h-5 text-blue-400" />
                     </div>
                     <div className="flex items-center gap-3">
-                      <item.icon className="w-5 h-5 text-gray-500 group-hover:text-blue-400 transition-colors duration-300" />
+                      <item.icon aria-hidden="true" className="w-5 h-5 text-gray-500 group-hover:text-blue-400 transition-colors duration-300" />
                       <span className="text-gray-300 group-hover:text-white transition-colors duration-300">
                         {item.text}
                       </span>
@@ -151,7 +142,6 @@ const HowWeKnow = () => {
                 ))}
               </div>
 
-              {/* Stats */}
               <div className="mt-10 pt-8 border-t border-white/10 grid grid-cols-3 gap-6">
                 <div>
                   <div className="font-['Space_Grotesk'] font-bold text-3xl text-blue-400">6</div>
@@ -168,27 +158,19 @@ const HowWeKnow = () => {
               </div>
             </div>
 
-            {/* Right Content - Image */}
             <div ref={imageRef} className="relative">
               <div className="relative rounded-2xl overflow-hidden">
-                <img
-                  src="/astronaut-moon.jpg"
-                  alt="Astronaut on the Moon"
-                  className="w-full h-auto"
-                />
-                {/* Overlay Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <img src="/astronaut-moon.jpg" alt="Apollo astronaut on the lunar surface beside the flag and lunar module" className="w-full h-auto" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" aria-hidden="true" />
               </div>
 
-              {/* Floating Badge */}
               <div className="absolute -bottom-6 -left-6 bg-blue-500 text-white px-6 py-4 rounded-xl shadow-lg animate-float">
                 <div className="font-['Space_Grotesk'] font-bold text-2xl">1969</div>
                 <div className="text-blue-100 text-sm">First Moon Landing</div>
               </div>
 
-              {/* Decorative Elements */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 border border-blue-500/30 rounded-full" />
-              <div className="absolute -bottom-8 -right-8 w-32 h-32 border border-blue-500/20 rounded-full" />
+              <div className="absolute -top-4 -right-4 w-24 h-24 border border-blue-500/30 rounded-full" aria-hidden="true" />
+              <div className="absolute -bottom-8 -right-8 w-32 h-32 border border-blue-500/20 rounded-full" aria-hidden="true" />
             </div>
           </div>
         </div>
