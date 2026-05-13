@@ -42,67 +42,39 @@ const ProofAfter1969 = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Title animation
       gsap.from('.timeline-title', {
-        y: 40,
+        y: 24,
         opacity: 0,
-        duration: 0.7,
+        duration: 0.55,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 80%',
+          start: 'top 88%',
           toggleActions: 'play none none reverse',
         },
       });
 
-      // Timeline line draw
       gsap.from('.timeline-line', {
         scaleY: 0,
         transformOrigin: 'top',
-        duration: 1.5,
+        duration: 0.9,
         ease: 'power2.out',
         scrollTrigger: {
           trigger: timelineRef.current,
-          start: 'top 80%',
+          start: 'top 88%',
           toggleActions: 'play none none reverse',
         },
       });
 
-      // Timeline items
       gsap.from('.timeline-item', {
-        x: 50,
+        x: 28,
         opacity: 0,
-        duration: 0.6,
-        stagger: 0.2,
+        duration: 0.45,
+        stagger: 0.12,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: timelineRef.current,
-          start: 'top 70%',
-          toggleActions: 'play none none reverse',
-        },
-      });
-
-      gsap.from('.timeline-dot', {
-        scale: 0,
-        duration: 0.3,
-        stagger: 0.2,
-        ease: 'back.out(1.7)',
-        scrollTrigger: {
-          trigger: timelineRef.current,
-          start: 'top 70%',
-          toggleActions: 'play none none reverse',
-        },
-      });
-
-      // Image parallax
-      gsap.from('.timeline-image', {
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 60%',
+          start: 'top 88%',
           toggleActions: 'play none none reverse',
         },
       });
@@ -112,15 +84,13 @@ const ProofAfter1969 = () => {
   }, []);
 
   return (
-    <section id="timeline" ref={sectionRef} className="relative py-24 lg:py-32">
-      {/* Background */}
+    <section id="timeline" ref={sectionRef} className="relative py-14 lg:py-20">
       <div className="absolute inset-0 bg-gradient-to-b from-black via-orange-950/10 to-black" />
 
       <div className="relative z-10 w-full section-padding">
         <div className="max-w-7xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="timeline-title font-['Space_Grotesk'] font-bold text-4xl sm:text-5xl mb-4">
+          <div className="text-center mb-8 lg:mb-10">
+            <h2 className="timeline-title font-['Space_Grotesk'] font-bold text-4xl sm:text-5xl mb-3">
               The Evidence Didn&apos;t Stop in 1969
             </h2>
             <p className="timeline-title text-gray-400 text-lg max-w-2xl mx-auto">
@@ -128,31 +98,22 @@ const ProofAfter1969 = () => {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
-            {/* Timeline */}
+          <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-8 lg:gap-12 items-start">
             <div ref={timelineRef} className="relative">
-              {/* Timeline Line */}
               <div className="timeline-line absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-orange-500" />
 
-              {/* Timeline Items */}
-              <div className="space-y-10">
+              <div className="space-y-6">
                 {timelineItems.map((item) => (
-                  <div key={item.year} className="timeline-item relative flex gap-6">
-                    {/* Dot */}
-                    <div
-                      className={`timeline-dot relative z-10 w-12 h-12 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center flex-shrink-0 shadow-lg`}
-                    >
+                  <div key={item.year} className="timeline-item relative flex gap-5">
+                    <div className={`relative z-10 w-12 h-12 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center flex-shrink-0 shadow-lg`}>
                       <item.icon className="w-5 h-5 text-white" />
                     </div>
 
-                    {/* Content */}
-                    <div className="flex-1 pt-1">
-                      <span
-                        className={`inline-block text-sm font-['Space_Grotesk'] font-bold bg-gradient-to-r ${item.color} bg-clip-text text-transparent mb-2`}
-                      >
+                    <div className="flex-1 pt-1 bg-white/5 border border-white/10 rounded-2xl p-4 backdrop-blur-sm">
+                      <span className={`inline-block text-sm font-['Space_Grotesk'] font-bold bg-gradient-to-r ${item.color} bg-clip-text text-transparent mb-2`}>
                         {item.year}
                       </span>
-                      <h3 className="font-['Space_Grotesk'] font-semibold text-xl mb-2">
+                      <h3 className="font-['Space_Grotesk'] font-semibold text-lg mb-2">
                         {item.title}
                       </h3>
                       <p className="text-gray-400 text-sm leading-relaxed">
@@ -164,37 +125,23 @@ const ProofAfter1969 = () => {
               </div>
             </div>
 
-            {/* Image */}
-            <div className="timeline-image relative">
-              <div className="relative rounded-2xl overflow-hidden">
-                <img
-                  src="/lunar-surface.jpg"
-                  alt="Lunar surface with equipment"
-                  className="w-full h-auto"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-              </div>
+            <div className="relative rounded-2xl overflow-hidden">
+              <img src="/lunar-surface.jpg" alt="Lunar surface with Apollo equipment" className="w-full h-full max-h-[520px] object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
 
-              {/* Stats Overlay */}
-              <div className="absolute bottom-6 left-6 right-6">
-                <div className="bg-black/80 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+              <div className="absolute bottom-5 left-5 right-5">
+                <div className="bg-black/80 backdrop-blur-sm rounded-xl p-5 border border-white/10">
                   <div className="grid grid-cols-3 gap-4 text-center">
                     <div>
-                      <div className="font-['Space_Grotesk'] font-bold text-2xl text-blue-400">
-                        50+
-                      </div>
+                      <div className="font-['Space_Grotesk'] font-bold text-2xl text-blue-400">50+</div>
                       <div className="text-gray-400 text-xs">Years of Data</div>
                     </div>
                     <div>
-                      <div className="font-['Space_Grotesk'] font-bold text-2xl text-purple-400">
-                        3
-                      </div>
+                      <div className="font-['Space_Grotesk'] font-bold text-2xl text-purple-400">3</div>
                       <div className="text-gray-400 text-xs">Active Observatories</div>
                     </div>
                     <div>
-                      <div className="font-['Space_Grotesk'] font-bold text-2xl text-orange-400">
-                        1000s
-                      </div>
+                      <div className="font-['Space_Grotesk'] font-bold text-2xl text-orange-400">1000s</div>
                       <div className="text-gray-400 text-xs">Research Papers</div>
                     </div>
                   </div>
