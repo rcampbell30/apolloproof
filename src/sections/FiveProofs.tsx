@@ -33,7 +33,7 @@ const proofs = [
   {
     icon: Activity,
     title: 'Surface Experiments',
-    description: 'Seismic stations and heat flow experiments left on the Moon transmitted data for years after the missions.',
+    description: 'Seismic stations and heat-flow experiments left on the Moon transmitted data for years after the missions.',
     color: 'from-red-500 to-rose-400',
   },
 ];
@@ -45,22 +45,22 @@ const FiveProofs = () => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from('.proofs-title', {
-        y: 24,
+        y: 18,
         opacity: 0,
-        duration: 0.55,
+        duration: 0.45,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 88%',
+          start: 'top 90%',
           toggleActions: 'play none none reverse',
         },
       });
 
       gsap.from('.proof-card', {
-        y: 36,
+        y: 24,
         opacity: 0,
-        duration: 0.5,
-        stagger: 0.08,
+        duration: 0.45,
+        stagger: 0.06,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: cardsRef.current,
@@ -74,12 +74,12 @@ const FiveProofs = () => {
   }, []);
 
   return (
-    <section id="evidence" ref={sectionRef} className="relative py-14 lg:py-20">
+    <section id="evidence" ref={sectionRef} className="relative py-12 lg:py-16">
       <div className="absolute inset-0 bg-gradient-to-b from-black via-blue-950/10 to-black" />
 
       <div className="relative z-10 w-full section-padding">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-8 lg:mb-10">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-8">
             <h2 className="proofs-title font-['Space_Grotesk'] font-bold text-4xl sm:text-5xl mb-3">
               Five Independent Lines of Evidence
             </h2>
@@ -88,12 +88,12 @@ const FiveProofs = () => {
             </p>
           </div>
 
-          <div ref={cardsRef} className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
+          <div ref={cardsRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-stretch">
             {proofs.map((proof, index) => (
               <div
                 key={proof.title}
-                className="proof-card group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-5 card-hover"
-                style={{ animationDelay: `${index * 80}ms` }}
+                className="proof-card group relative h-full min-h-[210px] bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-5 card-hover"
+                style={{ animationDelay: `${index * 60}ms` }}
               >
                 <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${proof.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300`} />
 
