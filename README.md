@@ -1,39 +1,60 @@
 # ApolloProof
 
-ApolloProof is a Moon landing evidence and debunking site that explains common Apollo denial claims using clear evidence, accessible explanations, and source-led reasoning.
+ApolloProof is a source-led Moon landing evidence library. It answers common Apollo denial claims using primary mission records, lunar samples, landing-site imagery, laser retroreflectors, tracking history and plain-English physics.
 
 ## Live site
 
 Live URL: https://apolloproof.netlify.app
 
-## Current status
+## Current upgrade
 
-This repository is set up as a static Netlify deployment using the working Vite build output.
+This version moves ApolloProof from a lightweight debunking page into a denser evidence resource.
+
+Added:
+
+- Evidence Library section with source links for samples, LRO imagery, retroreflectors, tracking, mission records and post-Apollo science.
+- Claim-by-claim cards for no stars, flag movement, shadows, Van Allen belts, blast crater and photo quality.
+- Source Quality Ladder prioritising primary mission records and physical evidence above general explainers.
+- SEO metadata, Open Graph metadata, FAQ schema, robots.txt and sitemap.xml.
+- A successful Vite production build.
 
 ## Deployment
 
-Use these Netlify settings:
+This project is a Vite / React / TypeScript app.
+
+Use these Netlify settings if deploying from source:
 
 ```text
-Base directory: leave blank
-Build command: leave blank
-Publish directory: .
+Base directory: app
+Build command: npm run build
+Publish directory: dist
 ```
 
-The repository root must include `index.html`, `assets/`, the image files, `netlify.toml`, `privacy.html`, `terms.html`, `robots.txt`, `sitemap.xml`, and `ads.txt`.
+If deploying the built output only, publish the `dist/` folder.
 
-## Local preview
+## Local development
 
-```powershell
-python -m http.server 4173
+```bash
+npm install
+npm run dev
 ```
 
-Then open:
+## Production build
 
-```text
-http://localhost:4173
+```bash
+npm run build
 ```
 
-## Debug note
+Build verified locally on 2026-05-13.
 
-The previous broken deployment was caused by an incomplete recovered build. The deployed bundle attempted to hydrate a TanStack/SSR-style app and lazy-load a missing chunk, causing `Invariant failed` and a black page. This package replaces that with the complete working Vite static output from the recovered ApolloProof project.
+## Evidence-first principle
+
+ApolloProof should not rely on slogans. Each claim should point readers toward checkable evidence: mission archives, sample records, observatory work, later orbital images and physics explanations.
+
+## Next upgrades
+
+- Split major claims into standalone `/claims/...` pages.
+- Add a dedicated `/sources` page with annotated citations.
+- Add a timeline page covering Apollo 8 through Apollo 17.
+- Add more primary-source links for each mission.
+- Add downloadable/source bibliography JSON for future static pages.
