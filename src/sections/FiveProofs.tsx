@@ -44,30 +44,27 @@ const FiveProofs = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Title animation
       gsap.from('.proofs-title', {
-        y: 40,
+        y: 24,
         opacity: 0,
-        duration: 0.8,
+        duration: 0.55,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 80%',
+          start: 'top 88%',
           toggleActions: 'play none none reverse',
         },
       });
 
-      // Cards stagger animation
       gsap.from('.proof-card', {
-        y: 80,
+        y: 36,
         opacity: 0,
-        rotateY: 15,
-        duration: 0.7,
-        stagger: 0.1,
+        duration: 0.5,
+        stagger: 0.08,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: cardsRef.current,
-          start: 'top 80%',
+          start: 'top 92%',
           toggleActions: 'play none none reverse',
         },
       });
@@ -77,19 +74,13 @@ const FiveProofs = () => {
   }, []);
 
   return (
-    <section
-      id="evidence"
-      ref={sectionRef}
-      className="relative py-24 lg:py-32"
-    >
-      {/* Background Accent */}
+    <section id="evidence" ref={sectionRef} className="relative py-14 lg:py-20">
       <div className="absolute inset-0 bg-gradient-to-b from-black via-blue-950/10 to-black" />
 
       <div className="relative z-10 w-full section-padding">
         <div className="max-w-7xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="proofs-title font-['Space_Grotesk'] font-bold text-4xl sm:text-5xl mb-4">
+          <div className="text-center mb-8 lg:mb-10">
+            <h2 className="proofs-title font-['Space_Grotesk'] font-bold text-4xl sm:text-5xl mb-3">
               Five Independent Lines of Evidence
             </h2>
             <p className="proofs-title text-gray-400 text-lg max-w-2xl mx-auto">
@@ -97,41 +88,27 @@ const FiveProofs = () => {
             </p>
           </div>
 
-          {/* Proof Cards */}
-          <div
-            ref={cardsRef}
-            className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6"
-          >
+          <div ref={cardsRef} className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
             {proofs.map((proof, index) => (
               <div
                 key={proof.title}
-                className="proof-card group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 card-hover perspective-1000 preserve-3d"
-                style={{ animationDelay: `${index * 100}ms` }}
+                className="proof-card group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-5 card-hover"
+                style={{ animationDelay: `${index * 80}ms` }}
               >
-                {/* Gradient Border on Hover */}
-                <div
-                  className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${proof.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300`}
-                />
+                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${proof.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300`} />
 
-                {/* Icon */}
-                <div
-                  className={`w-14 h-14 rounded-xl bg-gradient-to-br ${proof.color} flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300`}
-                >
-                  <proof.icon className="w-7 h-7 text-white" />
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${proof.color} flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300`}>
+                  <proof.icon className="w-6 h-6 text-white" />
                 </div>
 
-                {/* Content */}
-                <h3 className="font-['Space_Grotesk'] font-semibold text-xl mb-3 group-hover:text-blue-400 transition-colors duration-300">
+                <h3 className="font-['Space_Grotesk'] font-semibold text-lg mb-2 group-hover:text-blue-400 transition-colors duration-300">
                   {proof.title}
                 </h3>
                 <p className="text-gray-400 text-sm leading-relaxed">
                   {proof.description}
                 </p>
 
-                {/* Glow Effect */}
-                <div
-                  className={`absolute -inset-px rounded-2xl bg-gradient-to-br ${proof.color} opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-300 -z-10`}
-                />
+                <div className={`absolute -inset-px rounded-2xl bg-gradient-to-br ${proof.color} opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-300 -z-10`} />
               </div>
             ))}
           </div>
