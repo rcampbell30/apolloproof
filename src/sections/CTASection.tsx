@@ -5,6 +5,8 @@ import { Telescope, BookOpen } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const focusRing = 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black';
+
 const CTASection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -67,27 +69,25 @@ const CTASection = () => {
 
   return (
     <section ref={sectionRef} className="relative py-24 lg:py-32 overflow-hidden">
-      {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-blue-950/20 to-black" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-blue-950/20 to-black" aria-hidden="true" />
 
-      {/* Background Earth */}
-      <div className="absolute inset-0 flex items-center justify-center opacity-10">
+      <div className="absolute inset-0 flex items-center justify-center opacity-10" aria-hidden="true">
         <img
           src="/earth-hero.jpg"
           alt=""
+          aria-hidden="true"
           className="w-[800px] h-auto animate-float"
           style={{ animationDuration: '20s' }}
         />
       </div>
 
-      {/* Decorative Stars */}
-      <div className="absolute top-20 left-20 opacity-30 animate-twinkle">
+      <div className="absolute top-20 left-20 opacity-30 animate-twinkle" aria-hidden="true">
         <div className="w-1 h-1 bg-white rounded-full" />
       </div>
-      <div className="absolute top-40 right-32 opacity-20 animate-twinkle" style={{ animationDelay: '1s' }}>
+      <div className="absolute top-40 right-32 opacity-20 animate-twinkle" style={{ animationDelay: '1s' }} aria-hidden="true">
         <div className="w-1.5 h-1.5 bg-blue-400 rounded-full" />
       </div>
-      <div className="absolute bottom-32 left-1/4 opacity-25 animate-twinkle" style={{ animationDelay: '2s' }}>
+      <div className="absolute bottom-32 left-1/4 opacity-25 animate-twinkle" style={{ animationDelay: '2s' }} aria-hidden="true">
         <div className="w-1 h-1 bg-white rounded-full" />
       </div>
 
@@ -98,17 +98,16 @@ const CTASection = () => {
           </h2>
 
           <p className="cta-subheading text-gray-400 text-lg sm:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
-            Dive deeper into the proof, examine the claims, and draw your own conclusions. 
-            The evidence speaks for itself.
+            Dive deeper into the proof, examine the claims, and draw your own conclusions. The evidence speaks for itself.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button onClick={scrollToEvidence} className="cta-button btn-primary inline-flex items-center justify-center gap-2">
-              <Telescope className="w-5 h-5" />
+            <button onClick={scrollToEvidence} className={`cta-button btn-primary inline-flex items-center justify-center gap-2 ${focusRing}`} type="button">
+              <Telescope aria-hidden="true" className="w-5 h-5" />
               View All Evidence
             </button>
-            <button onClick={scrollToTimeline} className="cta-button btn-secondary inline-flex items-center justify-center gap-2">
-              <BookOpen className="w-5 h-5" />
+            <button onClick={scrollToTimeline} className={`cta-button btn-secondary inline-flex items-center justify-center gap-2 ${focusRing}`} type="button">
+              <BookOpen aria-hidden="true" className="w-5 h-5" />
               Browse the Timeline
             </button>
           </div>
