@@ -50,29 +50,27 @@ const WhyHarderToFake = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Title animation
       gsap.from('.fake-title', {
-        y: 40,
+        y: 24,
         opacity: 0,
-        duration: 0.8,
+        duration: 0.55,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 80%',
+          start: 'top 88%',
           toggleActions: 'play none none reverse',
         },
       });
 
-      // Cards stagger animation
       gsap.from('.fake-card', {
-        y: 60,
+        y: 36,
         opacity: 0,
-        duration: 0.6,
-        stagger: 0.1,
+        duration: 0.5,
+        stagger: 0.08,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: cardsRef.current,
-          start: 'top 80%',
+          start: 'top 92%',
           toggleActions: 'play none none reverse',
         },
       });
@@ -82,18 +80,13 @@ const WhyHarderToFake = () => {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative py-24 lg:py-32"
-    >
-      {/* Background Accent */}
+    <section ref={sectionRef} className="relative py-14 lg:py-20">
       <div className="absolute inset-0 bg-gradient-to-b from-black via-red-950/10 to-black" />
 
       <div className="relative z-10 w-full section-padding">
         <div className="max-w-7xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="fake-title font-['Space_Grotesk'] font-bold text-4xl sm:text-5xl mb-4">
+          <div className="text-center mb-8 lg:mb-10">
+            <h2 className="fake-title font-['Space_Grotesk'] font-bold text-4xl sm:text-5xl mb-3">
               Why It Would Be Harder to Fake
             </h2>
             <p className="fake-title text-gray-400 text-lg max-w-2xl mx-auto">
@@ -101,50 +94,35 @@ const WhyHarderToFake = () => {
             </p>
           </div>
 
-          {/* Challenge Cards */}
-          <div
-            ref={cardsRef}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
+          <div ref={cardsRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {fakeChallenges.map((challenge, index) => (
               <div
                 key={challenge.title}
-                className="fake-card group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 card-hover"
-                style={{ animationDelay: `${index * 100}ms` }}
+                className="fake-card group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-5 card-hover"
+                style={{ animationDelay: `${index * 80}ms` }}
               >
-                {/* Gradient Border on Hover */}
-                <div
-                  className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${challenge.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300`}
-                />
+                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${challenge.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300`} />
 
-                {/* Icon */}
-                <div
-                  className={`w-14 h-14 rounded-xl bg-gradient-to-br ${challenge.color} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}
-                >
-                  <challenge.icon className="w-7 h-7 text-white" />
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${challenge.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                  <challenge.icon className="w-6 h-6 text-white" />
                 </div>
 
-                {/* Content */}
-                <h3 className="font-['Space_Grotesk'] font-semibold text-xl mb-3 group-hover:text-blue-400 transition-colors duration-300">
+                <h3 className="font-['Space_Grotesk'] font-semibold text-lg mb-2 group-hover:text-blue-400 transition-colors duration-300">
                   {challenge.title}
                 </h3>
                 <p className="text-gray-400 text-sm leading-relaxed">
                   {challenge.description}
                 </p>
 
-                {/* Glow Effect */}
-                <div
-                  className={`absolute -inset-px rounded-2xl bg-gradient-to-br ${challenge.color} opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-300 -z-10`}
-                />
+                <div className={`absolute -inset-px rounded-2xl bg-gradient-to-br ${challenge.color} opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-300 -z-10`} />
               </div>
             ))}
           </div>
 
-          {/* Closing Statement */}
-          <div className="mt-16 text-center">
-            <div className="inline-block bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl px-8 py-6">
-              <p className="text-gray-300 text-lg max-w-2xl">
-                <span className="text-blue-400 font-semibold">The bottom line:</span> Faking the Moon landings would require a conspiracy involving hundreds of thousands of people, multiple hostile nations, and perfect secrecy for over 50 years. The evidence says we went.
+          <div className="mt-10 text-center">
+            <div className="inline-block bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl px-6 py-4">
+              <p className="text-gray-300 text-base md:text-lg max-w-2xl">
+                <span className="text-blue-400 font-semibold">The bottom line:</span> Faking the Moon landings would require hundreds of thousands of people, multiple hostile nations, and perfect secrecy for over 50 years. The evidence says we went.
               </p>
             </div>
           </div>
