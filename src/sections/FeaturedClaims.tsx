@@ -1,5 +1,7 @@
 import { ArrowRight, Camera, CircleDot, Flag, Image, Shield, Sun } from 'lucide-react';
 
+const focusRing = 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black';
+
 const claims = [
   {
     icon: Camera,
@@ -90,7 +92,7 @@ const claims = [
 const FeaturedClaims = () => {
   return (
     <section id="claims" className="relative py-24 lg:py-32">
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-purple-950/10 to-black" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-purple-950/10 to-black" aria-hidden="true" />
       <div className="relative z-10 w-full section-padding">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -108,8 +110,8 @@ const FeaturedClaims = () => {
               return (
                 <article key={item.claim} className="bg-gradient-to-br from-white/6 to-white/[0.02] border border-white/10 rounded-2xl p-6">
                   <div className="flex items-start gap-4 mb-5">
-                    <div className="w-12 h-12 rounded-xl bg-purple-500/15 border border-purple-500/30 flex items-center justify-center flex-shrink-0">
-                      <Icon className="w-6 h-6 text-purple-300" />
+                    <div className="w-12 h-12 rounded-xl bg-purple-500/15 border border-purple-500/30 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                      <Icon aria-hidden="true" className="w-6 h-6 text-purple-300" />
                     </div>
                     <div>
                       <h3 className="font-['Space_Grotesk'] font-semibold text-xl md:text-2xl mb-2">{item.claim}</h3>
@@ -128,7 +130,7 @@ const FeaturedClaims = () => {
                       <ul className="space-y-2">
                         {item.evidence.map((point) => (
                           <li key={point} className="flex gap-3 text-sm text-gray-300 leading-relaxed">
-                            <span className="mt-2 h-1.5 w-1.5 rounded-full bg-green-400 flex-shrink-0" />
+                            <span className="mt-2 h-1.5 w-1.5 rounded-full bg-green-400 flex-shrink-0" aria-hidden="true" />
                             <span>{point}</span>
                           </li>
                         ))}
@@ -145,10 +147,10 @@ const FeaturedClaims = () => {
                     href={item.sourceUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-blue-300 hover:text-white transition-colors"
+                    className={`mt-5 inline-flex items-center gap-2 rounded text-sm font-medium text-blue-300 hover:text-white transition-colors ${focusRing}`}
                   >
                     Source: {item.sourceLabel}
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowRight aria-hidden="true" className="w-4 h-4" />
                   </a>
                 </article>
               );
