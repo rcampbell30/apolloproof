@@ -41,43 +41,46 @@ const fakeChallenges = [
 
 const WhyHarderToFake = () => {
   return (
-    <section className="relative py-8 lg:py-10">
+    <section className="relative py-12 lg:py-16">
       <div className="absolute inset-0 bg-gradient-to-b from-black via-red-950/10 to-black" />
 
       <div className="relative z-10 w-full section-padding">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-6 lg:gap-8 items-start">
-            <div className="lg:sticky lg:top-28 bg-white/5 border border-white/10 rounded-2xl p-5 lg:p-6 backdrop-blur-sm">
-              <h2 className="font-['Space_Grotesk'] font-bold text-3xl sm:text-4xl mb-3">
-                Why It Would Be Harder to Fake
-              </h2>
-              <p className="text-gray-400 text-base leading-relaxed mb-4">
-                The conspiracy would require a bigger miracle than the missions themselves.
-              </p>
-              <p className="text-gray-300 text-sm leading-relaxed">
-                <span className="text-blue-400 font-semibold">The bottom line:</span> faking Apollo would require hundreds of thousands of people, multiple hostile nations, and perfect secrecy for over 50 years.
-              </p>
-            </div>
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="font-['Space_Grotesk'] font-bold text-4xl sm:text-5xl mb-3">
+              Why It Would Be Harder to Fake
+            </h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              The conspiracy would require a bigger miracle than the missions themselves
+            </p>
+          </div>
 
-            <div className="grid sm:grid-cols-2 gap-4">
-              {fakeChallenges.map((challenge) => (
-                <div key={challenge.title} className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 card-hover">
-                  <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${challenge.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300`} />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {fakeChallenges.map((challenge) => (
+              <div key={challenge.title} className="group relative h-full min-h-[190px] bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-5 card-hover">
+                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${challenge.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300`} />
 
-                  <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${challenge.color} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300`}>
-                    <challenge.icon className="w-5 h-5 text-white" />
-                  </div>
-
-                  <h3 className="font-['Space_Grotesk'] font-semibold text-base mb-2 group-hover:text-blue-400 transition-colors duration-300">
-                    {challenge.title}
-                  </h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
-                    {challenge.description}
-                  </p>
-
-                  <div className={`absolute -inset-px rounded-2xl bg-gradient-to-br ${challenge.color} opacity-0 group-hover:opacity-25 blur-xl transition-opacity duration-300 -z-10`} />
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${challenge.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                  <challenge.icon className="w-6 h-6 text-white" />
                 </div>
-              ))}
+
+                <h3 className="font-['Space_Grotesk'] font-semibold text-lg mb-2 group-hover:text-blue-400 transition-colors duration-300">
+                  {challenge.title}
+                </h3>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  {challenge.description}
+                </p>
+
+                <div className={`absolute -inset-px rounded-2xl bg-gradient-to-br ${challenge.color} opacity-0 group-hover:opacity-25 blur-xl transition-opacity duration-300 -z-10`} />
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-6 text-center">
+            <div className="inline-block bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl px-6 py-4">
+              <p className="text-gray-300 text-base md:text-lg max-w-3xl">
+                <span className="text-blue-400 font-semibold">The bottom line:</span> faking Apollo would require hundreds of thousands of people, multiple hostile nations, and perfect secrecy for over 50 years. The evidence says we went.
+              </p>
             </div>
           </div>
         </div>
