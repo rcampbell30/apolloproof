@@ -1,5 +1,7 @@
 import { ExternalLink } from 'lucide-react';
 
+const focusRing = 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black';
+
 const sourceTiers = [
   {
     tier: 'Primary mission records',
@@ -42,7 +44,7 @@ const sourceTiers = [
 const SourceCredibility = () => {
   return (
     <section id="sources" className="relative py-24 lg:py-32">
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-green-950/10 to-black" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-green-950/10 to-black" aria-hidden="true" />
       <div className="relative z-10 w-full section-padding">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -58,7 +60,7 @@ const SourceCredibility = () => {
             {sourceTiers.map((tier, index) => (
               <article key={tier.tier} className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
                 <div className="flex items-start gap-4 mb-5">
-                  <div className="w-10 h-10 rounded-full bg-green-500/15 border border-green-500/30 flex items-center justify-center text-green-300 font-bold">
+                  <div className="w-10 h-10 rounded-full bg-green-500/15 border border-green-500/30 flex items-center justify-center text-green-300 font-bold" aria-hidden="true">
                     {index + 1}
                   </div>
                   <div>
@@ -74,10 +76,10 @@ const SourceCredibility = () => {
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-between gap-4 rounded-xl bg-black/30 border border-white/10 px-4 py-3 text-gray-300 hover:text-white hover:border-green-400/40 transition-colors"
+                      className={`flex items-center justify-between gap-4 rounded-xl bg-black/30 border border-white/10 px-4 py-3 text-gray-300 hover:text-white hover:border-green-400/40 transition-colors ${focusRing}`}
                     >
                       <span className="text-sm">{link.name}</span>
-                      <ExternalLink className="w-4 h-4 flex-shrink-0" />
+                      <ExternalLink aria-hidden="true" className="w-4 h-4 flex-shrink-0" />
                     </a>
                   ))}
                 </div>
@@ -87,7 +89,7 @@ const SourceCredibility = () => {
 
           <div className="mt-16 text-center">
             <div className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-6 py-3">
-              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" aria-hidden="true" />
               <span className="text-gray-400 text-sm">
                 Strong debunking means linking the reader to the evidence, not asking them to trust a slogan.
               </span>
