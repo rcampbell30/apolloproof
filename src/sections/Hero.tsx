@@ -5,6 +5,8 @@ import { ChevronDown, Telescope, Radio, Microscope } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const focusRing = 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black';
+
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -13,7 +15,6 @@ const Hero = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Starfield parallax
       gsap.to(starsRef.current, {
         yPercent: 30,
         ease: 'none',
@@ -25,7 +26,6 @@ const Hero = () => {
         },
       });
 
-      // Content fade out on scroll
       gsap.to(contentRef.current, {
         y: -50,
         opacity: 0,
@@ -38,7 +38,6 @@ const Hero = () => {
         },
       });
 
-      // Earth parallax
       gsap.to(earthRef.current, {
         y: -100,
         scale: 1.1,
@@ -51,7 +50,6 @@ const Hero = () => {
         },
       });
 
-      // Entrance animations
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
       tl.from('.hero-eyebrow', {
@@ -123,35 +121,22 @@ const Hero = () => {
   };
 
   return (
-    <section
-      ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
-    >
-      {/* Animated Starfield Background */}
-      <div
-        ref={starsRef}
-        className="absolute inset-0 starfield opacity-60"
-        style={{ transform: 'scale(1.5)' }}
-      />
+    <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      <div ref={starsRef} className="absolute inset-0 starfield opacity-60" style={{ transform: 'scale(1.5)' }} aria-hidden="true" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black" aria-hidden="true" />
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black" />
-
-      {/* Floating Accent Elements */}
-      <div className="absolute top-1/4 left-10 opacity-20 animate-float">
-        <Telescope className="w-12 h-12 text-blue-400" />
+      <div className="absolute top-1/4 left-10 opacity-20 animate-float" aria-hidden="true">
+        <Telescope aria-hidden="true" className="w-12 h-12 text-blue-400" />
       </div>
-      <div className="absolute bottom-1/3 right-20 opacity-20 animate-float" style={{ animationDelay: '2s' }}>
-        <Radio className="w-10 h-10 text-blue-400" />
+      <div className="absolute bottom-1/3 right-20 opacity-20 animate-float" style={{ animationDelay: '2s' }} aria-hidden="true">
+        <Radio aria-hidden="true" className="w-10 h-10 text-blue-400" />
       </div>
-      <div className="absolute top-1/3 right-1/4 opacity-15 animate-float" style={{ animationDelay: '4s' }}>
-        <Microscope className="w-8 h-8 text-blue-400" />
+      <div className="absolute top-1/3 right-1/4 opacity-15 animate-float" style={{ animationDelay: '4s' }} aria-hidden="true">
+        <Microscope aria-hidden="true" className="w-8 h-8 text-blue-400" />
       </div>
 
-      {/* Content */}
       <div className="relative z-10 w-full section-padding">
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
-          {/* Left Content */}
           <div ref={contentRef} className="text-center lg:text-left">
             <p className="hero-eyebrow text-blue-400 font-['Space_Grotesk'] font-semibold text-sm tracking-widest uppercase mb-6">
               The Evidence Did Not Stop in 1969
@@ -167,35 +152,29 @@ const Hero = () => {
             </h1>
 
             <p className="hero-subheadline text-gray-400 text-lg sm:text-xl max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed">
-              Independent verification. Laser ranging. Orbital imagery. Lunar samples. 
-              The proof is still accumulating today.
+              Independent verification. Laser ranging. Orbital imagery. Lunar samples. The proof is still accumulating today.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <button onClick={scrollToEvidence} className="hero-cta btn-primary">
+              <button onClick={scrollToEvidence} className={`hero-cta btn-primary ${focusRing}`} type="button">
                 See the Evidence
               </button>
-              <button onClick={scrollToClaims} className="hero-cta btn-secondary">
+              <button onClick={scrollToClaims} className={`hero-cta btn-secondary ${focusRing}`} type="button">
                 Explore Claims
               </button>
             </div>
           </div>
 
-          {/* Right Content - Earth Image */}
-          <div
-            ref={earthRef}
-            className="relative hidden lg:flex items-center justify-center"
-          >
+          <div ref={earthRef} className="relative hidden lg:flex items-center justify-center">
             <div className="relative w-full max-w-lg animate-float">
               <img
                 src="/earth-hero.jpg"
-                alt="Earth from space"
+                alt="Earth seen from space, introducing ApolloProof as a Moon landing evidence library"
                 className="w-full h-auto rounded-full shadow-2xl"
                 style={{
                   boxShadow: '0 0 100px rgba(59, 130, 246, 0.3), 0 0 200px rgba(59, 130, 246, 0.1)',
                 }}
               />
-              {/* Reflection */}
               <div
                 className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-3/4 h-20 opacity-30"
                 style={{
@@ -203,16 +182,16 @@ const Hero = () => {
                   filter: 'blur(20px)',
                   transform: 'translateX(-50%) scaleY(-1)',
                 }}
+                aria-hidden="true"
               />
             </div>
           </div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-500 animate-bounce">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-500 animate-bounce" aria-hidden="true">
         <span className="text-xs uppercase tracking-widest">Scroll</span>
-        <ChevronDown className="w-5 h-5" />
+        <ChevronDown aria-hidden="true" className="w-5 h-5" />
       </div>
     </section>
   );
