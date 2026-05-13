@@ -1,5 +1,7 @@
 import { ExternalLink, FlaskConical, Image, Radio, Ruler, Satellite, ScrollText } from 'lucide-react';
 
+const focusRing = 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black';
+
 const evidenceItems = [
   {
     icon: FlaskConical,
@@ -66,7 +68,7 @@ const evidenceItems = [
 const EvidenceLibrary = () => {
   return (
     <section id="library" className="relative py-24 lg:py-32">
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-slate-950/70 to-black" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-slate-950/70 to-black" aria-hidden="true" />
       <div className="relative z-10 w-full section-padding">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -84,8 +86,8 @@ const EvidenceLibrary = () => {
               return (
                 <article key={item.title} className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/[0.07] transition-colors duration-300">
                   <div className="flex items-start gap-4 mb-5">
-                    <div className="w-12 h-12 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center flex-shrink-0">
-                      <Icon className="w-6 h-6 text-blue-400" />
+                    <div className="w-12 h-12 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                      <Icon aria-hidden="true" className="w-6 h-6 text-blue-400" />
                     </div>
                     <div>
                       <h3 className="font-['Space_Grotesk'] font-semibold text-2xl mb-2">{item.title}</h3>
@@ -100,10 +102,10 @@ const EvidenceLibrary = () => {
                         href={source.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-gray-300 hover:border-blue-400/50 hover:text-white transition-colors"
+                        className={`inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-gray-300 hover:border-blue-400/50 hover:text-white transition-colors ${focusRing}`}
                       >
                         {source.label}
-                        <ExternalLink className="w-3.5 h-3.5" />
+                        <ExternalLink aria-hidden="true" className="w-3.5 h-3.5" />
                       </a>
                     ))}
                   </div>
