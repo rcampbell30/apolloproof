@@ -17,9 +17,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   useEffect(() => {
-    // Initialize scroll animations
     const ctx = gsap.context(() => {
-      // Refresh ScrollTrigger on load
       ScrollTrigger.refresh();
     });
 
@@ -28,8 +26,14 @@ function App() {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-blue-500 focus:px-4 focus:py-3 focus:text-sm focus:font-semibold focus:text-white focus:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+      >
+        Skip to main content
+      </a>
       <Navigation />
-      <main>
+      <main id="main-content">
         <Hero />
         <FiveProofs />
         <EvidenceLibrary />
