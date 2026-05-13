@@ -85,7 +85,7 @@ const ProofAfter1969 = () => {
 
   return (
     <section id="timeline" ref={sectionRef} className="relative py-14 lg:py-20">
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-orange-950/10 to-black" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-orange-950/10 to-black" aria-hidden="true" />
 
       <div className="relative z-10 w-full section-padding">
         <div className="max-w-7xl mx-auto">
@@ -100,13 +100,13 @@ const ProofAfter1969 = () => {
 
           <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-8 lg:gap-12 items-start">
             <div ref={timelineRef} className="relative">
-              <div className="timeline-line absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-orange-500" />
+              <div className="timeline-line absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-orange-500" aria-hidden="true" />
 
               <div className="space-y-6">
                 {timelineItems.map((item) => (
                   <div key={item.year} className="timeline-item relative flex gap-5">
-                    <div className={`relative z-10 w-12 h-12 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center flex-shrink-0 shadow-lg`}>
-                      <item.icon className="w-5 h-5 text-white" />
+                    <div className={`relative z-10 w-12 h-12 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center flex-shrink-0 shadow-lg`} aria-hidden="true">
+                      <item.icon aria-hidden="true" className="w-5 h-5 text-white" />
                     </div>
 
                     <div className="flex-1 pt-1 bg-white/5 border border-white/10 rounded-2xl p-4 backdrop-blur-sm">
@@ -126,8 +126,8 @@ const ProofAfter1969 = () => {
             </div>
 
             <div className="relative rounded-2xl overflow-hidden">
-              <img src="/lunar-surface.jpg" alt="Lunar surface with Apollo equipment" className="w-full h-full max-h-[520px] object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+              <img src="/lunar-surface.jpg" alt="Apollo lunar rover and scientific equipment on the Moon's surface" className="w-full h-full max-h-[520px] object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" aria-hidden="true" />
 
               <div className="absolute bottom-5 left-5 right-5">
                 <div className="bg-black/80 backdrop-blur-sm rounded-xl p-5 border border-white/10">
